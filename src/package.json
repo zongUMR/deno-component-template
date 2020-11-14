@@ -1,0 +1,16 @@
+{
+  "name": "serverless-deno",
+  "version": "0.0.1",
+  "description": "Serverless Deno Application on Tencent SCF using Custom Runtime.",
+  "scripts": {
+    "dev": "denon run --allow-net --allow-env ./src/start.ts",
+    "bundle": "deno bundle entry.ts entry.js",
+    "deploy": "npm run bundle && serverless deploy",
+    "deploy:layer": "serverless deploy --target=./layer"
+  },
+  "keywords": [
+    "serverless",
+    "deno",
+    "serverless-components"
+  ]
+}

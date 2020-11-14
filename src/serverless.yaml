@@ -1,0 +1,34 @@
+org: deno-component
+app: deno-component
+stage: dev
+
+component: scf
+name: deno-component
+
+inputs:
+  src:
+    src: ./
+    exclude:
+      - '.env'
+      - '.git/**'
+      - 'layer/**'
+  region: ${env:REGION}
+  runtime: CustomRuntime
+  name: ${name}
+  initTimeout: 10
+  handler: entry.ts
+  layers:
+    - name: ${output:${stage}:${app}:${name}-layer.name}
+      version: ${output:${stage}:${app}:${name}-layer.version}
+  events:
+    - apigw:
+        parameters:
+          protocols:
+            - http
+            - https
+          environment: release
+          endpoints:
+            - path: /
+              method: GET
+              function:
+                isIntegratedResponse: true
