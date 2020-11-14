@@ -1,4 +1,4 @@
-# Quickly create and deploy vue-starter application
+# Quickly create and deploy deno application
 
 [中文](./README.md) | **English**
 
@@ -18,7 +18,7 @@ npm install -g serverless
 
 ### 2. Initialize
 
-Initializing the vue-starter template by running this following command:
+Initializing the serverless-deno template by running this following command:
 
 ```bash
 serverless init deno-component-template --name example
